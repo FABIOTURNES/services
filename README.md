@@ -1,54 +1,63 @@
-<header>
+# SorteioPromo
 
-<!--
-  <<< Author notes: Course header >>>
-  Include a 1280×640 image, course title in sentence case, and a concise description in emphasis.
-  In your repository settings: enable template repository, add your 1280×640 social image, auto delete head branches.
-  Add your open source license, GitHub uses MIT license.
--->
+Clone moderno de [sorteio.com](https://sorteio.com/) para criar promoções e sorteios oficiais usando publicações do Instagram, Facebook e TikTok.
 
-# GitHub Pages
+## Visão geral
 
-_Create a site or blog from your GitHub repositories with GitHub Pages._
+O projeto fornece uma landing page responsiva com formulário para cadastrar promoções e uma API Node.js/Express que conversa com as APIs oficiais das redes sociais (Facebook Graph API e TikTok for Developers). Quando os tokens de acesso não estão configurados, o sistema usa dados simulados para permitir testes locais.
 
-</header>
+## Recursos
 
-<!--
-  <<< Author notes: Step 1 >>>
-  Choose 3-5 steps for your course.
-  The first step is always the hardest, so pick something easy!
-  Link to docs.github.com for further explanations.
-  Encourage users to open new tabs for steps!
--->
+- Cadastro de promoções com nome, plataforma, ID/URL da publicação e regra de participação (curtidas e/ou comentários).
+- Execução do sorteio com seleção aleatória de vencedores.
+- Visualização dos participantes elegíveis em tempo real.
+- Integração com Instagram, Facebook e TikTok por meio de chamadas às APIs oficiais.
+- Interface responsiva inspirada no design de sorteio.com.
 
-## Step 1: Enable GitHub Pages
+## Como executar localmente
 
-_Welcome to GitHub Pages and Jekyll :tada:!_
+1. Instale as dependências:
 
-The first step is to enable GitHub Pages on this [repository](https://docs.github.com/en/get-started/quickstart/github-glossary#repository). When you enable GitHub Pages on a repository, GitHub takes the content that's on the main branch and publishes a website based on its contents.
+   ```bash
+   npm install
+   ```
 
-### :keyboard: Activity: Enable GitHub Pages
+2. (Opcional) Crie um arquivo `.env` na raiz com os tokens de acesso obtidos nas plataformas:
 
-1. Open a new browser tab, and work on the steps in your second tab while you read the instructions in this tab.
-1. Under your repository name, click **Settings**.
-1. Click **Pages** in the **Code and automation** section.
-1. Ensure "Deploy from a branch" is selected from the **Source** drop-down menu, and then select `main` from the **Branch** drop-down menu.
-1. Click the **Save** button.
-1. Wait about _one minute_ then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
-   > Turning on GitHub Pages creates a deployment of your repository. GitHub Actions may take up to a minute to respond while waiting for the deployment. Future steps will be about 20 seconds; this step is slower.
-   > **Note**: In the **Pages** of **Settings**, the **Visit site** button will appear at the top. Click the button to see your GitHub Pages site.
+   ```ini
+   INSTAGRAM_ACCESS_TOKEN=seu_token_instagram
+   FACEBOOK_ACCESS_TOKEN=seu_token_facebook
+   TIKTOK_ACCESS_TOKEN=seu_token_tiktok
+   ```
 
-<footer>
+   > Sem os tokens o sistema utiliza respostas simuladas apenas para testes.
 
-<!--
-  <<< Author notes: Footer >>>
-  Add a link to get support, GitHub status page, code of conduct, license link.
--->
+3. Inicie o servidor:
 
----
+   ```bash
+   npm start
+   ```
 
-Get help: [Post in our discussion board](https://github.com/orgs/skills/discussions/categories/github-pages) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
+4. Acesse `http://localhost:3000` no navegador para usar a aplicação.
 
-&copy; 2023 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
+## Estrutura de diretórios
 
-</footer>
+```
+├── data/promotions.json       # Armazenamento simples das promoções cadastradas
+├── public/                    # Arquivos estáticos da interface web
+│   ├── app.js
+│   ├── index.html
+│   └── styles.css
+├── src/
+│   ├── integrations/          # Integrações com Instagram, Facebook e TikTok
+│   └── services/              # Serviços de promoção e participantes
+├── server.js                  # API Express
+├── package.json
+└── README.md
+```
+
+## Próximos passos sugeridos
+
+- Persistir promoções em um banco de dados gerenciado.
+- Implementar autenticação OAuth para que cada usuário conecte suas próprias contas.
+- Criar logs de auditoria exportáveis em PDF/CSV para registro público do sorteio.

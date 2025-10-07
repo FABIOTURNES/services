@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sorteio Promo Social</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="navbar">
+        <span class="logo">SorteioPromo</span>
+        <a class="cta" href="#criar">Criar promoção</a>
+      </nav>
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>O seu sorteio oficial para Instagram, Facebook e TikTok</h1>
+          <p>
+            Engaje seguidores, premie fãs fiéis e monitore a participação em tempo real. Nosso painel integra com as principais
+            redes sociais para sorteios seguros com curtidas e comentários.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#criar">Começar agora</a>
+            <a class="btn ghost" href="#como-funciona">Ver como funciona</a>
+          </div>
+          <ul class="hero-trust">
+            <li>Auditoria automática de participantes</li>
+            <li>Relatórios exportáveis</li>
+            <li>Conformidade com políticas de promoção</li>
+          </ul>
+        </div>
+        <div class="hero-card">
+          <h2>Crie seu sorteio em 3 passos</h2>
+          <ol>
+            <li>Conecte-se com Instagram, Facebook ou TikTok.</li>
+            <li>Escolha se curtidas ou comentários participam.</li>
+            <li>Gere o vencedor e compartilhe com a sua audiência.</li>
+          </ol>
+          <p class="hero-note">Integração via APIs oficiais das redes sociais.</p>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="como-funciona" class="features">
+        <h2>Feito para criadores e marcas</h2>
+        <div class="feature-grid">
+          <article>
+            <h3>Validação com API oficial</h3>
+            <p>
+              Sincronize curtidas e comentários usando o Facebook Graph API e o TikTok for Developers. Garantimos a elegibilidade
+              real dos participantes.
+            </p>
+          </article>
+          <article>
+            <h3>Regras personalizadas</h3>
+            <p>
+              Defina quais interações contam, quantos vencedores serão sorteados e personalize o texto de anúncio do resultado.
+            </p>
+          </article>
+          <article>
+            <h3>Auditoria transparente</h3>
+            <p>
+              Cada sorteio gera um relatório auditável com o histórico de participantes, garantindo confiança para a sua audiência.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="criar" class="promotion">
+        <div class="section-header">
+          <h2>Configure sua promoção</h2>
+          <p>Informe a publicação elegível, escolha as interações válidas e sorteie em segundos.</p>
+        </div>
+        <form id="promotion-form" class="card">
+          <div class="form-group">
+            <label for="promotion-name">Nome da promoção</label>
+            <input type="text" id="promotion-name" name="name" placeholder="Ex: Sorteio de lançamento" />
+          </div>
+          <div class="form-group">
+            <label for="platform">Plataforma</label>
+            <select id="platform" name="platform" required>
+              <option value="">Selecione</option>
+              <option value="instagram">Instagram</option>
+              <option value="facebook">Facebook</option>
+              <option value="tiktok">TikTok</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="post-identifier">ID ou URL da publicação</label>
+            <input
+              type="text"
+              id="post-identifier"
+              name="postIdentifier"
+              placeholder="Cole o link da publicação ou o ID do post"
+              required
+            />
+            <small class="hint">Utilize o ID oficial da publicação para garantir a leitura via API.</small>
+          </div>
+          <div class="form-group inline">
+            <label>
+              <input type="checkbox" name="includeLikes" checked />
+              Contar curtidas
+            </label>
+            <label>
+              <input type="checkbox" name="includeComments" checked />
+              Contar comentários
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="winners-count">Quantidade de vencedores</label>
+            <input type="number" id="winners-count" name="winnersCount" min="1" value="1" />
+          </div>
+          <button class="btn primary" type="submit">Salvar promoção</button>
+          <p class="form-feedback" id="promotion-feedback" role="status"></p>
+        </form>
+
+        <section class="card promotion-list">
+          <header>
+            <h3>Sorteios cadastrados</h3>
+            <p>Execute o sorteio sempre que precisar atualizar os vencedores.</p>
+          </header>
+          <ul id="promotion-list"></ul>
+        </section>
+      </section>
+
+      <section class="cta-section">
+        <h2>Pronto para engajar sua comunidade?</h2>
+        <p>Comunique-se com confiança. Gire o sorteio, exporte os resultados e publique o vencedor nas redes sociais.</p>
+        <a class="btn primary" href="#criar">Começar agora</a>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; <span id="year"></span> SorteioPromo. Uma plataforma independente inspirada em sorteio.com.</p>
+      <div class="footer-links">
+        <a href="#como-funciona">Como funciona</a>
+        <a href="mailto:suporte@sorteiopromo.com">Suporte</a>
+        <a href="#criar">Criar promoção</a>
+      </div>
+    </footer>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
